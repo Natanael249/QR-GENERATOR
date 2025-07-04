@@ -31,12 +31,12 @@ const QRCodeGenerator = () => {
     setLoading(true);
     setQrImageUrl(null);
 
-    try {
-      const res = await fetch('`${process.env.REACT_APP_BACKEND_URL}', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: textoFormateado }),
-      });
+   try {
+    const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/generate-qr`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: textoFormateado }),
+    });
 
       const blob = await res.blob();
       const imageUrl = URL.createObjectURL(blob);
